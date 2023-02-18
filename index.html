@@ -1,0 +1,52 @@
+<html><head>
+        <title>Router.ID URLS - BY BYET.TV</title>
+        <link rel="shortcut icon" href="/router-favicon.png">
+  </head>
+  <body>
+    <h1 class="message"><img src="/router-logo.png" height="150" width="500"></h1>
+      <div>
+          <input name="text" type="url" value="" id="linkinput" placeholder="Paste a URL to shorten">
+          <input type="submit" id="myinput" value="Shorten">
+      </div>
+      <p id="message"></p>
+      <h3>Powered By <a href="//byet.tv">Byet.tv</a><p>
+ <script>
+document.getElementById("myinput").onclick = function() {
+  var link = document.getElementById("linkinput").value;
+  var data = {
+    "domain":"my.router.id",
+    "originalURL": link,
+    "allowDuplicates":false }; 
+ fetch('https://api.short.cm/links/public', {
+    method: 'post',
+    headers: {
+      'accept': 'application/json',
+      'Content-Type': 'application/json',
+      'authorization': 'pk_cHkgeZ4DVnS5CqzQ'
+    },
+    body: JSON.stringify(data)
+  }) .then(function(response) {
+        return response.json();
+    }) 
+    .then(function(data){ 
+    document.getElementById("message").innerHTML = "Your short link is " + data.shortURL })
+    document.getElementById("linkinput").value='';
+ }
+    </script>
+  
+
+</p></h3>
+</body><style class="stylish-style" data-style-id="168153" data-stylish="168153" id="stylish-style-168153">/*
+    
+    Theme Name: Netflix Recolor Plus
+
+    Creator: Adam-J-Frost.
+
+    Updated: 2020/04/13
+
+    Created: 2019/01/24
+    
+    Description: Change the colors of Netflix and add more if you like!
+
+*/
+@namespace url(http://www.w3.org/1999/xhtml);</style></html>
