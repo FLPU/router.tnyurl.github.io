@@ -238,6 +238,66 @@ disk{
 }());
 </script>
 </div>
+    <br>
+<div class="music-player">
+<h1 class="music-name">REQUEST SONGS</h1>
+<script>
+    (function() {
+    'use strict';
+
+        var widget = {"id":"we9d9a74","name":"SONG REQUESTS","confirmation_text":"Your Reuqest Has Been Sent To The KJ RADIO Admin It Will Take 1-2 Minutes For The Song To Play.","theme":{"background_colour":"#5f7a61","button_colour":"#ffffff","text_colour":"#ffffff","corner_style":"rounded","background_style":"colour","button_style":"rounded","width":650,"height":350,"show_artwork_in_list":true},"embed_url":"\/\/public.radio.co\/request\/we9d9a74.html"};
+    
+    /**
+     * Build the iframe that points to the source of the requests widget.
+     *
+     * @param {object} settings     The width and height of the element.
+     * @return {Element}            Returns the built iframe object.
+     */
+    function buildFrame(settings) {
+        var iframe = document.createElement('iframe');
+        var maxWidth = settings.theme.width;
+        var height = settings.theme.height;
+        var style = "border:none;max-width:" + maxWidth + 'px';
+
+        iframe.src = settings.embed_url;
+        iframe.width = '100%';
+        iframe.height = height + 'px';
+
+        iframe.setAttribute('style', style);
+
+        return iframe;
+    }
+
+    /**
+     * Replaces the embed script tag with the newly built iframe.
+     *
+     * @param {Element} iframe      The iframe to be injected.
+     * @param {NodeList} scriptTag   The script tag to be replaced by the iframe.
+     */
+    function replaceScriptTag(iframe, scriptTag) {
+        scriptTag = scriptTag[scriptTag.length - 1];
+
+        if (scriptTag.parentNode.nodeName === 'HEAD') {
+            window.onload = function() {
+                document.body.appendChild(iframe);
+            };
+            return;
+        }
+
+        scriptTag.parentNode.insertBefore(iframe, scriptTag);
+    }
+
+    // Build the iframe to be injected in the users website.
+    var iframe = buildFrame(widget);
+
+    // Get the script tag where they want to embed the widget.
+    var scriptTag = document.getElementsByTagName('script');
+
+    // Replace the script tag with the custom iframe.
+    replaceScriptTag(iframe, scriptTag);
+}());
+    </script>
+</div>
 </body>
 </html>
 
